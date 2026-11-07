@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="تحليل مفردات الاختبار القصير وخطط علاجية وإثرائية"><title>تحليل الاختبار القصير</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7f9;--card:#fff;--tx:#1d2330;--mu:#667085;--bd:#dfe3ea;--ac:#0f766e;--act:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--card:#1a2029;--tx:#e8ecf2;--mu:#98a2b3;--bd:#2c3542;--ac:#2dd4bf;--act:#0b1f1d}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.6;padding:12px}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin:0 auto 12px;max-width:980px}
+h1{font-size:20px;margin:4px auto 12px;max-width:980px}h2{font-size:16px;margin:0 0 8px}
+input,select,textarea,button{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:6px 8px}
+input[type=number]{width:64px}.t{width:100%;box-sizing:border-box}
+button{cursor:pointer}button.p{background:var(--ac);color:var(--act);border-color:var(--ac)}
+.w{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--bd);padding:5px 6px;text-align:center;white-space:nowrap}td.l{text-align:right;white-space:normal;min-width:140px}
+th{background:var(--bg)}.r{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.m{color:var(--mu);font-size:13px}img.pv{max-width:100%;max-height:300px;border-radius:8px}
+.b{padding:2px 8px;border-radius:10px;font-size:12px;color:#fff}
+@media print{.np{display:none}body{background:#fff;color:#000}}
+</style></head><body>
+<style>.hm{max-width:760px;margin:0 auto}.hero{text-align:center;padding:22px 14px}.ic{width:92px;height:92px;border-radius:24px;background:var(--ac);color:var(--act);font-size:46px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}.go{font-size:18px;padding:12px 28px;border-radius:12px;margin-top:10px}.st{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.st i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ac);color:var(--act);display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;font-size:14px}.hm ul{margin:6px 0;padding-inline-start:20px}</style>
+<div id="home" class="hm">
+<div class="c hero"><div class="ic">📊</div><h1 style="margin:0 0 6px;text-align:center">تحليل الاختبار القصير</h1><p class="m" style="font-size:15px;margin:0">أداة للمعلم تحلّل مفردات اختبارك وتقيس نسب الإتقان ومعامل الصعوبة، ثم تقترح خططًا علاجية وإثرائية وأسئلة جاهزة للتطبيق.</p><button class="p go" onclick="location.hash='tool'">🚀 ابدأ التحليل</button></div>
+<div class="c"><h2>كيف تستخدمه؟</h2>
+<div class="st"><i>1</i><div><b>ارفع مسودة الاختبار</b> (صورة أو PDF) واضغط «اقرأ المفردات»؛ يستخرج الذكاء الاصطناعي المفردات ودرجاتها. أو أدخلها يدويًا.</div></div>
+<div class="st"><i>2</i><div><b>راجع المفردات</b> وعدّل أي نص أو درجة غير صحيحة، فالمفردات غير الواضحة تُنبّه إليها.</div></div>
+<div class="st"><i>3</i><div><b>أدخل النتائج:</b> عدد الطلبة، ثم درجات كل طالب (صفوف مرقّمة بلا أسماء) أو مجاميع كل مفردة.</div></div>
+<div class="st"><i>4</i><div><b>اضبط حدود الإتقان</b> إن أردت (الافتراضي 90 / 80 / 70 / 60)، ثم اضغط «حلّل الاختبار».</div></div>
+<div class="st"><i>5</i><div><b>ولّد الخطط الذكية:</b> إجراءات علاجية ونشاطات إثرائية وأسئلة مقترحة مبنية على تحليل كل مفردة، ثم اطبع التقرير أو احفظه PDF.</div></div></div>
+<div class="c"><h2>ماذا تعني المؤشرات؟</h2><ul>
+<li><b>نسبة الإتقان</b> = الدرجات المحققة ÷ (عدد الطلبة × درجة المفردة) × 100.</li>
+<li><b>معامل الصعوبة</b> = 1 − (نسبة الإتقان ÷ 100)، وارتفاعه يعني أن المفردة أصعب على المجموعة.</li>
+<li><b>معامل التمييز</b> يقارن الفئة العليا بالدنيا (27%)، ويتطلب إدخال درجات كل طالب (6 طلبة فأكثر).</li>
+<li><b>مستوى الإتقان:</b> 90%+ مرتفع جدًا، 80–89% مرتفع، 70–79% مقبول، 60–69% منخفض، أقل من 60% منخفض جدًا.</li></ul></div>
+<div class="c"><h2>ملاحظات مهمة</h2><ul>
+<li><b>الخصوصية:</b> لا تُدخل أسماء الطلبة أو أرقامهم؛ التحليل مجمّع ومجهول الهوية.</li>
+<li>التحليل يقيس جودة المفردات ومستوى الإتقان في المهارات، لا تقييم طالب بعينه. ولا يُحكم على جودة مفردة بمعامل صعوبتها وحده.</li>
+<li>ميزتا قراءة الملف وتوليد الخطط تعملان بمفتاح API خاص بك من مزوّد ذكاء اصطناعي تختاره (Gemini أو OpenAI أو OpenRouter)، وتُرسل نص الاختبار وصورته إلى المزوّد، ومخرجاتهما تحتاج مراجعتك قبل التطبيق.</li>
+<li>البيانات لا تُحفظ بعد إغلاق الصفحة، لذا اطبع التقرير أو احفظه PDF قبل الخروج.</li></ul>
+<div style="text-align:center"><button class="p go" onclick="location.hash='tool'">🚀 ابدأ التحليل</button></div></div></div>
+<div id="app" style="display:none">
+<div class="r np" style="max-width:980px;margin:0 auto"><button onclick="location.hash=''">← الصفحة التعريفية</button></div>
+<h1>📊 تحليل الاختبار القصير</h1>
+
+<div class="c np"><h2>⚙️ إعدادات الذكاء الاصطناعي</h2>
+<div class="r"><label>المزوّد: <select id="pvd" onchange="saveCfg()"><option value="gemini">Google Gemini</option><option value="openai">OpenAI</option><option value="openrouter">OpenRouter</option></select></label>
+<label>النموذج: <input id="mod" placeholder="اتركه فارغًا للافتراضي" onchange="saveCfg()"></label></div>
+<div class="r"><label>مفتاح API: <input type="password" id="key" class="t" style="width:min(420px,80vw)" dir="ltr" onchange="saveCfg()"></label>
+<label><input type="checkbox" id="rem" onchange="saveCfg()"> تذكّر المفتاح على هذا الجهاز</label></div>
+<div class="m">يُحفظ المفتاح في متصفحك فقط ولا يُرفع إلى أي موقع آخر غير المزوّد الذي تختاره. لا تضع مفتاحك داخل الكود أبدًا. يتطلب قراءة الملفات نموذجًا يدعم الصور.</div></div>
+<div class="c np"><h2>1) مسودة الاختبار</h2>
+<div class="r"><input type="file" id="f" accept="image/*,.pdf"><button class="p" id="ai" onclick="aiRead()">🤖 اقرأ المفردات والدرجات من الملف</button></div>
+<div class="m" id="st">ارفع صورة أو PDF ثم اضغط الزر، وراجع النتيجة وعدّلها قبل التحليل.</div>
+<div id="pv"></div>
+<div class="r"><input id="ti" placeholder="عنوان الاختبار"><input id="su" placeholder="المادة"><input id="gr" placeholder="الصف"></div>
+<div class="w"><table><thead><tr><th>#</th><th>نص المفردة / المهارة</th><th>الدرجة</th><th></th></tr></thead><tbody id="it"></tbody></table></div>
+<div class="r"><button onclick="addI()">+ مفردة</button></div></div>
+
+<div class="c np"><h2>2) إدخال الدرجات (بدون أسماء)</h2>
+<div class="r"><label>طريقة الإدخال:
+<select id="md" onchange="build()"><option value="s">درجات كل طالب (طالب 1، 2…)</option><option value="a">مجاميع لكل مفردة</option></select></label>
+<label>عدد الطلبة: <input type="number" id="n" min="1" value="10" onchange="build()"></label></div>
+<div class="m">لا تُدخل أسماء أو أرقامًا مدنية؛ الصفوف مرقّمة فقط والتحليل مجمّع.</div>
+<div class="w" id="gd"></div></div>
+
+<div class="c np"><h2>3) حدود الإتقان (قابلة للتعديل)</h2>
+<div class="r">مرتفع جدًا ≥<input type="number" id="h1" value="90"> مرتفع ≥<input type="number" id="h2" value="80"> مقبول ≥<input type="number" id="h3" value="70"> منخفض ≥<input type="number" id="h4" value="60"></div>
+<div class="r"><button class="p" onclick="run()">حلّل الاختبار</button><button onclick="window.print()">طباعة / PDF</button></div></div>
+
+<div id="out"></div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+let items=[{t:'',m:1},{t:'',m:1},{t:'',m:1}];
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function drawI(){$('it').innerHTML=items.map((x,i)=>`<tr><td>${i+1}</td><td class="l"><input class="t" value="${esc(x.t)}" oninput="items[${i}].t=this.value"></td><td><input type="number" min="0.5" step="0.5" value="${x.m}" onchange="items[${i}].m=+this.value||1;build()"></td><td><button onclick="delI(${i})">✕</button></td></tr>`).join('')}
+function addI(){items.push({t:'',m:1});drawI();build()}
+function delI(i){if(items.length>1){items.splice(i,1);drawI();build()}}
+let vals={};
+function build(){
+ const n=Math.max(1,+$('n').value||1),k=items.length,s=$('md').value==='s';
+ let h='<table><thead><tr><th>'+(s?'الطالب':'')+'</th>'+items.map((x,i)=>`<th>م${i+1}<br><small>من ${x.m}</small></th>`).join('')+'</tr></thead><tbody>';
+ if(s){for(let r=0;r<n;r++){h+=`<tr><th>${r+1}</th>`+items.map((x,i)=>`<td><input type="number" min="0" max="${x.m}" step="0.5" value="${vals['s'+r+'_'+i]??''}" oninput="vals['s${r}_${i}']=this.value"></td>`).join('')+'</tr>'}}
+ else{h+='<tr><th>المجموع</th>'+items.map((x,i)=>`<td><input type="number" min="0" max="${x.m*n}" step="0.5" value="${vals['a'+i]??''}" oninput="vals['a${i}']=this.value"></td>`).join('')+'</tr>'}
+ $('gd').innerHTML=h+'</tbody></table>';
+}
+async function pdfToBlobs(f){
+ pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+ const d=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise,o=[];
+ for(let p=1;p<=Math.min(d.numPages,4);p++){const pg=await d.getPage(p),v=pg.getViewport({scale:1.6}),c=document.createElement('canvas');c.width=v.width;c.height=v.height;
+  await pg.render({canvasContext:c.getContext('2d'),viewport:v}).promise;o.push(await new Promise(r=>c.toBlob(r,'image/jpeg',.85)))}
+ return o}
+async function aiRead(){
+ const f=$('f').files[0],st=$('st');if(!f){st.textContent='ارفع الملف أولًا.';return}
+ $('ai').disabled=true;st.textContent='⏳ جارٍ قراءة الملف…';
+ try{
+    const imgs=f.type==='application/pdf'?await pdfToBlobs(f):[f];
+  const q='اقرأ صور ورقة الاختبار المرفقة (OCR) واستخرج مفرداتها. أعد JSON فقط بلا أي شرح بالشكل: {"title":"","subject":"","grade":"","items":[{"text":"نص المفردة مختصرًا","max":1}]}. كل جزء مثل 3-أ و3-ب مفردة مستقلة إن كانت له درجة مستقلة. max هي درجة المفردة كما تظهر في الورقة؛ إن لم تكن واضحة فضع null ولا تخمّن. إن تعذرت قراءة نص فاكتب "يحتاج إلى مراجعة المعلم". اترك الحقل فارغًا إن لم يظهر.';
+  const r={text:await callAI(q,imgs)};
+  const m=r.text.match(/\{[\s\S]*\}/);const j=JSON.parse(m[0]);
+  if(!j.items||!j.items.length)throw new Error('empty');
+  items=j.items.map(x=>({t:x.text||'',m:+x.max||1,u:!+x.max}));
+  if(j.title)$('ti').value=j.title;if(j.subject)$('su').value=j.subject;if(j.grade)$('gr').value=j.grade;
+  drawI();build();
+  const u=items.filter(x=>x.u).length;
+  st.textContent='✅ تمت قراءة '+items.length+' مفردة.'+(u?' '+u+' مفردة درجتها غير واضحة وضُبطت مؤقتًا على 1، يرجى مراجعتها.':'')+' راجع النص والدرجات قبل التحليل.';
+ }catch(e){st.textContent='تعذرت القراءة'+(e&&e.message?' ('+e.message+')':'')+'؛ جرّب صورة أوضح أو أدخل المفردات يدويًا.'}
+ finally{$('ai').disabled=false}
+}
+$('f').onchange=e=>{const f=e.target.files[0];if(!f)return;const u=URL.createObjectURL(f);
+ $('pv').innerHTML=f.type.startsWith('image')?`<img class="pv" src="${u}">`:`<object data="${u}" type="application/pdf" width="100%" height="300"><div class="m">${esc(f.name)}</div></object>`};
+async function aiPlans(){
+ const st=$('aist'),R=window.R;if(!R)return;st.textContent='⏳ جارٍ تحليل المفردات وبناء الخطط…';
+ try{
+    const data=R.map(r=>({n:r.i+1,text:r.x.t||'(غير مدخل)',max:r.x.m,mastery:+r.p.toFixed(1),difficulty:+r.d.toFixed(2),discrimination:r.dd===undefined?null:+r.dd.toFixed(2),level:r.L[0],type:r.p>=window.MAST?'enrichment':'remedial'}));
+  const q='أنت خبير قياس وتقويم تربوي. حلّل نتائج المفردات التالية (بيانات مجمّعة مجهولة الهوية) وقدّم خطة علاجية للمفردات من النوع remedial وخطة إثرائية للمفردات من النوع enrichment، مع أسئلة جاهزة يطبقها المعلم على الطلبة.\nالقواعد: اربط الضعف بالمفهوم أو المهارة لا بالطلبة. لا تفترض سببًا محددًا للضعف بل اكتب في problem عبارة "سبب محتمل يحتاج إلى تحقق بسؤال تشخيصي" مع وصف مختصر لما يُحتمل فحصه. لا تحكم على جودة المفردة بمعامل الصعوبة وحده، وإذا كان التمييز أقل من 0.2 فاذكر أن صياغة المفردة تحتاج مراجعة. إذا كان نص المفردة غير مدخل فاطلب من المعلم إدخاله ولا تخمّنه. ممنوع استخدام عبارات عامة مثل "إعادة شرح" أو "علاج" أو "إعادة تقويم" وحدها. يجب أن تكون action وactivity وreassess أمثلة تطبيقية محددة مبنية على محتوى نص المفردة نفسها: اذكر ماذا يفعل المعلم خطوة بخطوة، وأي مثال أو عدد أو رسم أو مادة يستخدمها، وماذا يكتب على السبورة أو يطلب من الطلبة، والمدة المقترحة. اختر الأسلوب المناسب لتشخيصك للمفردة، والإجراءات عملية وقابلة للتطبيق داخل الصف (إعادة شرح مختلف، تمثيل بصري، نشاط عملي، تعلم تعاوني، مثال محلول، تدريب متدرج، ورقة عمل). الأسئلة جديدة بصياغة مختلفة عن نص المفردة وتقيس المهارة نفسها: للعلاجي سؤالان (الأول تشخيصي اختيار من متعدد بمشتتات تكشف الخطأ الشائع، والثاني تدريبي أسهل)، وللإثرائي سؤال واحد بمستوى معرفي أعلى (تفسير أو استدلال أو تطبيق في موقف جديد) مع نشاط إثرائي. لكل سؤال أجب بالإجابة النموذجية.\nأعد JSON فقط بلا أي نص آخر بالشكل: {"summary":"ملخص تحليلي قصير للمعلم","items":[{"n":1,"concept":"","problem":"","action":"","activity":"","reassess":"","questions":[{"q":"","options":["أ) ..","ب) .."],"answer":"","purpose":""}]}]} واترك options مصفوفة فارغة للسؤال المفتوح.\nالبيانات: '+JSON.stringify(data);
+  const res={text:await callAI(q,[])};
+  const j=JSON.parse(res.text.match(/\{[\s\S]*\}/)[0]);
+  let h=`<p>${esc(j.summary||'')}</p>`;
+  for(const it of j.items||[]){const r=R[(+it.n||1)-1];if(!r)continue;const e=r.p>=window.MAST;
+   h+=`<div style="border:1px solid var(--bd);border-radius:10px;padding:10px;margin:8px 0"><b>م${r.i+1}</b> <span class="b" style="background:${e?'#15803d':r.L[1]}">${e?'إثراء':'علاج'} — ${r.p.toFixed(1)}%</span><div class="m">${esc(r.x.t)}</div><p><b>المفهوم/المهارة:</b> ${esc(it.concept||'')}<br><b>المشكلة المحتملة:</b> ${esc(it.problem||'')}<br><b>الإجراء:</b> ${esc(it.action||'')}<br><b>النشاط:</b> ${esc(it.activity||'')}<br><b>إعادة التقويم:</b> ${esc(it.reassess||'')}</p>`+
+   (it.questions||[]).map((k,x)=>`<div style="background:var(--bg);border-radius:8px;padding:8px;margin:6px 0"><b>سؤال ${x+1}:</b> ${esc(k.q||'')}${k.purpose?` <span class="m">(${esc(k.purpose)})</span>`:''}${(k.options||[]).length?'<br>'+k.options.map(o=>esc(o)).join('<br>'):''}<br><span class="m">الإجابة النموذجية: ${esc(k.answer||'')}</span></div>`).join('')+'</div>'}
+  for(const it of j.items||[]){const c=$('ac'+((+it.n||1)-1));if(c&&it.action)c.innerHTML=esc(it.action)+(it.activity?'<br><span class="m">'+esc(it.activity)+'</span>':'')}
+  $('aiout').innerHTML=h;['sp1','sp2'].forEach(i=>{const el=$(i);if(el)el.style.display='none'});
+  st.textContent='✅ تم بناء الخطط. راجعها قبل تطبيقها؛ هي اقتراحات مبنية على بياناتك.';
+ }catch(e){st.textContent='تعذّر التوليد'+(e&&e.message?' ('+e.message+')':'')+'؛ الخطط العامة أدناه متاحة.'}
+}
+function lvl(p){const a=[+$('h1').value,+$('h2').value,+$('h3').value,+$('h4').value];
+ return p>=a[0]?['إتقان مرتفع جدًا','#15803d']:p>=a[1]?['إتقان مرتفع','#4d7c0f']:p>=a[2]?['إتقان مقبول','#b45309']:p>=a[3]?['إتقان منخفض','#c2410c']:['إتقان منخفض جدًا','#b91c1c']}
+function run(){
+ const n=Math.max(1,+$('n').value||1),k=items.length,s=$('md').value==='s',mast=+$('h2').value;
+ let sums=[],tot=[],D=[];
+ if(s){
+  const M=[];for(let r=0;r<n;r++){M.push(items.map((x,i)=>+vals['s'+r+'_'+i]||0))}
+  sums=items.map((x,i)=>M.reduce((a,r)=>a+r[i],0));
+  if(n>=6){const idx=M.map((r,j)=>[r.reduce((a,b)=>a+b,0),j]).sort((a,b)=>b[0]-a[0]);
+   const g=Math.max(1,Math.round(n*.27)),up=idx.slice(0,g),lo=idx.slice(-g);
+   D=items.map((x,i)=>(up.reduce((a,u)=>a+M[u[1]][i],0)-lo.reduce((a,u)=>a+M[u[1]][i],0))/(g*x.m));}
+ } else sums=items.map((x,i)=>+vals['a'+i]||0);
+ const rows=items.map((x,i)=>{const p=sums[i]/(n*x.m)*100,d=1-p/100,L=lvl(p),dd=D[i];
+  let dg=p>=90?'مفردة سهلة جدًا / تمكن جيد':p>=80?'تمكن جيد':p>=70?'حاجة إلى تعزيز':p>=60?'ضعف في مفهوم أو مهارة':'مفردة مرتفعة الصعوبة وضعف في مفهوم أو مهارة';
+  if(dd!==undefined&&dd<0.2)dg+=' — تمييز منخفض: يُنصح بمراجعة صياغة المفردة';
+  const ac=p>=mast?'إثراء وتوسيع':p>=70?'تعزيز بمثال محلول وتدريب قصير':'إعادة شرح + علاج + إعادة تقويم';
+  return{i,x,p,d,L,dd,dg,ac,s:sums[i]}});
+ const avg=rows.reduce((a,r)=>a+r.p,0)/k,hi=rows.reduce((a,b)=>b.p>a.p?b:a),lo=rows.reduce((a,b)=>b.p<a.p?b:a);
+ const ok=rows.filter(r=>r.p>=mast),no=rows.filter(r=>r.p<mast);
+ const nm=r=>`م${r.i+1}${r.x.t?' ('+esc(r.x.t)+')':''}`;
+ let h=`<div class="c"><h2>التقرير: ${esc($('ti').value||'اختبار قصير')}</h2><div class="m">${esc($('su').value)} ${esc($('gr').value)} — عدد الطلبة: ${n} — عدد المفردات: ${k}</div></div>`;
+ h+=`<div class="c"><h2>ملخص تنفيذي</h2><p>متوسط نسبة الإتقان: <b>${avg.toFixed(1)}%</b> (${lvl(avg)[0]}).<br>الأعلى إتقانًا: ${nm(hi)} (${hi.p.toFixed(1)}%) — الأقل إتقانًا: ${nm(lo)} (${lo.p.toFixed(1)}%).<br>الأعلى صعوبة: ${nm(lo)} (${lo.d.toFixed(2)}) — الأقل صعوبة: ${nm(hi)} (${hi.d.toFixed(2)}).<br>محققة للإتقان (≥${mast}%): ${ok.map(r=>'م'+(r.i+1)).join('، ')||'لا يوجد'}.<br>غير محققة: ${no.map(r=>'م'+(r.i+1)).join('، ')||'لا يوجد'}.</p>
+ <div class="m">يُربط المستوى المنخفض بالمفهوم أو المهارة وليس بالطلبة. لا يُحكم على جودة المفردة بمعامل الصعوبة وحده.</div></div>`;
+ h+=`<div class="c"><h2>جدول تحليل المفردات</h2><div class="w"><table><tr><th>المفردة</th><th>الدرجة</th><th>الطلبة</th><th>النتيجة</th><th>الإتقان</th><th>الصعوبة</th>${D.length?'<th>التمييز</th>':''}<th>المستوى</th><th>التشخيص</th><th>الإجراء</th></tr>`+
+ rows.map(r=>`<tr><td class="l">م${r.i+1} ${esc(r.x.t)}</td><td>${r.x.m}</td><td>${n}</td><td>${r.s}</td><td>${r.p.toFixed(1)}%</td><td>${r.d.toFixed(2)}</td>${D.length?`<td>${r.dd.toFixed(2)}</td>`:''}<td><span class="b" style="background:${r.L[1]}">${r.L[0]}</span></td><td class="l">${r.dg}</td><td class="l" id="ac${r.i}">${r.ac}</td></tr>`).join('')+'</table></div>'+(D.length?'':'<div class="m">معامل التمييز يتطلب إدخال درجات كل طالب (6 طلبة فأكثر).</div>')+'</div>';
+ h+=`<div class="c" id="aic"><h2>🤖 خطط علاجية وإثرائية وأسئلة مقترحة بالذكاء الاصطناعي</h2><div class="r np"><button class="p" onclick="aiPlans()">ولّد الخطط والأسئلة من تحليل المفردات</button><span class="m" id="aist">تُبنى على نص كل مفردة ونتائجها.</span></div><div id="aiout"></div></div><div class="c" id="sp1"><h2>الخطة العلاجية (إجراءات عامة)</h2><div class="w"><table><tr><th>المفردة</th><th>المفهوم/المهارة</th><th>الإتقان</th><th>المشكلة المحتملة</th><th>الإجراء العلاجي</th><th>النشاط</th><th>إعادة التقويم</th></tr>`+
+ (no.map(r=>{const v=r.p<60;return`<tr><td>م${r.i+1}</td><td class="l">${esc(r.x.t)||'—'}</td><td>${r.p.toFixed(1)}%</td><td class="l">سبب محتمل يحتاج إلى تحقق بسؤال تشخيصي</td><td class="l">${v?'إعادة شرح المفهوم بطريقة مختلفة مع تمثيل بصري':'مثال محلول ثم تدريب متدرج'}</td><td class="l">${v?'نشاط عملي / تعلم تعاوني + ورقة عمل علاجية':'ورقة عمل قصيرة وتصحيح جماعي'}</td><td class="l">سؤال تشخيصي قصير ثم تقويم تكويني مصغّر</td></tr>`}).join('')||'<tr><td colspan="7">جميع المفردات حققت حد الإتقان.</td></tr>')+'</table></div></div>';
+ h+=`<div class="c" id="sp2"><h2>الخطة الإثرائية (إجراءات عامة)</h2>`+(ok.length?'<ul>'+ok.map(r=>`<li>${nm(r)}: سؤال تفسير أو استدلال أعلى مستوى، وتطبيق في موقف جديد، أو مهمة استقصاء قصيرة.</li>`).join('')+'</ul>':'<p class="m">لا توجد مفردات بلغت حد الإتقان.</p>')+'</div>';
+ window.R=rows;window.MAST=mast;$('out').innerHTML=h;$('out').scrollIntoView({behavior:'smooth'});
+}
+const DEF={gemini:'gemini-2.5-flash',openai:'gpt-4o',openrouter:'google/gemini-2.5-flash'};
+function saveCfg(){try{const o={p:$('pvd').value,m:$('mod').value,k:$('key').value};sessionStorage.setItem('ai',JSON.stringify(o));
+ if($('rem').checked)localStorage.setItem('ai',JSON.stringify(o));else localStorage.removeItem('ai')}catch(e){}}
+function loadCfg(){try{const t=localStorage.getItem('ai'),o=JSON.parse(t||sessionStorage.getItem('ai')||'null');if(o){$('pvd').value=o.p;$('mod').value=o.m||'';$('key').value=o.k||'';$('rem').checked=!!t}}catch(e){}}
+function b64(b){return new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result.split(',')[1]);fr.readAsDataURL(b)})}
+async function callAI(q,imgs){
+ const p=$('pvd').value,k=$('key').value.trim(),m=$('mod').value.trim()||DEF[p];
+ if(!k)throw new Error('أدخل مفتاح API في إعدادات الذكاء الاصطناعي');
+ const ims=await Promise.all((imgs||[]).map(async b=>({t:b.type||'image/jpeg',d:await b64(b)})));
+ let r,j;
+ if(p==='gemini'){
+  r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(m)+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':k},body:JSON.stringify({contents:[{parts:[{text:q}].concat(ims.map(i=>({inline_data:{mime_type:i.t,data:i.d}})))}]})});
+  j=await r.json();if(!r.ok)throw new Error((j.error&&j.error.message)||r.status);
+  return j.candidates[0].content.parts.map(x=>x.text||'').join('');
+ }
+ const url=p==='openai'?'https://api.openai.com/v1/chat/completions':'https://openrouter.ai/api/v1/chat/completions';
+ r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+k},body:JSON.stringify({model:m,messages:[{role:'user',content:[{type:'text',text:q}].concat(ims.map(i=>({type:'image_url',image_url:{url:'data:'+i.t+';base64,'+i.d}})))}]})});
+ j=await r.json();if(!r.ok)throw new Error((j.error&&j.error.message)||r.status);
+ return j.choices[0].message.content;
+}
+loadCfg();
+drawI();build();
+function route(){const t=location.hash==='#tool';$('home').style.display=t?'none':'block';$('app').style.display=t?'block':'none';window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+</script></body></html>
