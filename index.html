@@ -36,19 +36,19 @@ th{background:var(--bg)}.r{display:flex;gap:8px;flex-wrap:wrap;align-items:cente
 <div class="c"><h2>ملاحظات مهمة</h2><ul>
 <li><b>الخصوصية:</b> لا تُدخل أسماء الطلبة أو أرقامهم؛ التحليل مجمّع ومجهول الهوية.</li>
 <li>التحليل يقيس جودة المفردات ومستوى الإتقان في المهارات، لا تقييم طالب بعينه. ولا يُحكم على جودة مفردة بمعامل صعوبتها وحده.</li>
-<li>ميزتا قراءة الملف وتوليد الخطط تعملان بمفتاح API خاص بك من مزوّد ذكاء اصطناعي تختاره (Gemini أو OpenAI أو OpenRouter)، وتُرسل نص الاختبار وصورته إلى المزوّد، ومخرجاتهما تحتاج مراجعتك قبل التطبيق.</li>
+<li>ميزتا قراءة الملف وتوليد الخطط تعملان بالذكاء الاصطناعي، وتُرسلان نص الاختبار وصورته إلى خدمة الذكاء الاصطناعي المستخدمة في الموقع، ومخرجاتهما تحتاج مراجعتك قبل التطبيق.</li>
 <li>البيانات لا تُحفظ بعد إغلاق الصفحة، لذا اطبع التقرير أو احفظه PDF قبل الخروج.</li></ul>
 <div style="text-align:center"><button class="p go" onclick="location.hash='tool'">🚀 ابدأ التحليل</button></div></div></div>
 <div id="app" style="display:none">
 <div class="r np" style="max-width:980px;margin:0 auto"><button onclick="location.hash=''">← الصفحة التعريفية</button></div>
 <h1>📊 تحليل الاختبار القصير</h1>
 
-<div class="c np"><h2>⚙️ إعدادات الذكاء الاصطناعي</h2>
-<div class="r"><label>المزوّد: <select id="pvd" onchange="saveCfg()"><option value="gemini">Google Gemini</option><option value="openai">OpenAI</option><option value="openrouter">OpenRouter</option></select></label>
+<div class="c np" id="cfgcard"><h2>⚙️ إعدادات الذكاء الاصطناعي</h2>
+<div class="r"><label>المزوّد: <select id="pvd" onchange="saveCfg();tk()"><option value="puter">Puter — بدون مفتاح (يسجّل المعلم الدخول)</option><option value="gemini">Google Gemini</option><option value="openai">OpenAI</option><option value="openrouter">OpenRouter</option></select></label>
 <label>النموذج: <input id="mod" placeholder="اتركه فارغًا للافتراضي" onchange="saveCfg()"></label></div>
-<div class="r"><label>مفتاح API: <input type="password" id="key" class="t" style="width:min(420px,80vw)" dir="ltr" onchange="saveCfg()"></label>
+<div class="r" id="keyrow"><label>مفتاح API: <input type="password" id="key" class="t" style="width:min(420px,80vw)" dir="ltr" onchange="saveCfg()"></label>
 <label><input type="checkbox" id="rem" onchange="saveCfg()"> تذكّر المفتاح على هذا الجهاز</label></div>
-<div class="m">يُحفظ المفتاح في متصفحك فقط ولا يُرفع إلى أي موقع آخر غير المزوّد الذي تختاره. لا تضع مفتاحك داخل الكود أبدًا. يتطلب قراءة الملفات نموذجًا يدعم الصور.</div></div>
+<div class="m">عند اختيار Puter لا تحتاج إلى مفتاح: يظهر نافذة تسجيل دخول مجاني لحساب Puter عند أول استخدام، وتُحتسب تكلفة الاستخدام على حساب المعلم نفسه. أما المزوّدون الآخرون فيُحفظ المفتاح في متصفحك فقط ولا يُرفع إلى أي موقع آخر غير المزوّد الذي تختاره. لا تضع مفتاحك داخل الكود أبدًا. يتطلب قراءة الملفات نموذجًا يدعم الصور.</div></div>
 <div class="c np"><h2>1) مسودة الاختبار</h2>
 <div class="r"><input type="file" id="f" accept="image/*,.pdf"><button class="p" id="ai" onclick="aiRead()">🤖 اقرأ المفردات والدرجات من الملف</button></div>
 <div class="m" id="st">ارفع صورة أو PDF ثم اضغط الزر، وراجع النتيجة وعدّلها قبل التحليل.</div>
@@ -71,6 +71,7 @@ th{background:var(--bg)}.r{display:flex;gap:8px;flex-wrap:wrap;align-items:cente
 <div id="out"></div>
 
 </div>
+<script src="https://js.puter.com/v2/"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
 const $=id=>document.getElementById(id);
@@ -158,16 +159,33 @@ function run(){
  h+=`<div class="c" id="sp2"><h2>الخطة الإثرائية (إجراءات عامة)</h2>`+(ok.length?'<ul>'+ok.map(r=>`<li>${nm(r)}: سؤال تفسير أو استدلال أعلى مستوى، وتطبيق في موقف جديد، أو مهمة استقصاء قصيرة.</li>`).join('')+'</ul>':'<p class="m">لا توجد مفردات بلغت حد الإتقان.</p>')+'</div>';
  window.R=rows;window.MAST=mast;$('out').innerHTML=h;$('out').scrollIntoView({behavior:'smooth'});
 }
-const DEF={gemini:'gemini-2.5-flash',openai:'gpt-4o',openrouter:'google/gemini-2.5-flash'};
+// ضع هنا رابط Cloudflare Worker (مثال: https://exam-ai.name.workers.dev) ليعمل الذكاء الاصطناعي بدون مفتاح للمعلمين
+const PROXY_URL='';
+const DEF={puter:'google/gemini-2.5-flash',gemini:'gemini-2.5-flash',openai:'gpt-4o',openrouter:'google/gemini-2.5-flash'};
 function saveCfg(){try{const o={p:$('pvd').value,m:$('mod').value,k:$('key').value};sessionStorage.setItem('ai',JSON.stringify(o));
  if($('rem').checked)localStorage.setItem('ai',JSON.stringify(o));else localStorage.removeItem('ai')}catch(e){}}
 function loadCfg(){try{const t=localStorage.getItem('ai'),o=JSON.parse(t||sessionStorage.getItem('ai')||'null');if(o){$('pvd').value=o.p;$('mod').value=o.m||'';$('key').value=o.k||'';$('rem').checked=!!t}}catch(e){}}
+function tk(){$('keyrow').style.display=$('pvd').value==='puter'?'none':'flex'}
 function b64(b){return new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result.split(',')[1]);fr.readAsDataURL(b)})}
 async function callAI(q,imgs){
  const p=$('pvd').value,k=$('key').value.trim(),m=$('mod').value.trim()||DEF[p];
- if(!k)throw new Error('أدخل مفتاح API في إعدادات الذكاء الاصطناعي');
  const ims=await Promise.all((imgs||[]).map(async b=>({t:b.type||'image/jpeg',d:await b64(b)})));
  let r,j;
+ if(PROXY_URL){
+  r=await fetch(PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:q,images:ims})});
+  j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||('خطأ '+r.status));
+  return j.text;
+ }
+ if(p==='puter'){
+  if(typeof puter==='undefined')throw new Error('تعذّر تحميل Puter: يعمل الذكاء الاصطناعي بعد نشر الموقع على GitHub Pages أو أي استضافة عادية، ولا يعمل داخل معاينة Claude');
+  const u=ims.map(i=>'data:'+i.t+';base64,'+i.d);
+  const x=u.length?await puter.ai.chat(q,u.length>1?u:u[0],{model:m}):await puter.ai.chat(q,{model:m});
+  let c=typeof x==='string'?x:(x&&x.message&&x.message.content);
+  if(Array.isArray(c))c=c.map(y=>y.text||'').join('');
+  if(!c)throw new Error('لم يصل رد من Puter');
+  return c;
+ }
+ if(!k)throw new Error('أدخل مفتاح API في إعدادات الذكاء الاصطناعي');
  if(p==='gemini'){
   r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(m)+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':k},body:JSON.stringify({contents:[{parts:[{text:q}].concat(ims.map(i=>({inline_data:{mime_type:i.t,data:i.d}})))}]})});
   j=await r.json();if(!r.ok)throw new Error((j.error&&j.error.message)||r.status);
@@ -178,7 +196,7 @@ async function callAI(q,imgs){
  j=await r.json();if(!r.ok)throw new Error((j.error&&j.error.message)||r.status);
  return j.choices[0].message.content;
 }
-loadCfg();
+loadCfg();tk();if(PROXY_URL)$('cfgcard').style.display='none';
 drawI();build();
 function route(){const t=location.hash==='#tool';$('home').style.display=t?'none':'block';$('app').style.display=t?'block':'none';window.scrollTo(0,0)}
 addEventListener('hashchange',route);route();
