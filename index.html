@@ -77,7 +77,8 @@ th{background:var(--bg)}.r{display:flex;gap:8px;flex-wrap:wrap;align-items:cente
 const $=id=>document.getElementById(id);
 let items=[{t:'',m:1},{t:'',m:1},{t:'',m:1}];
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function drawI(){$('it').innerHTML=items.map((x,i)=>`<tr><td>${i+1}</td><td class="l"><input class="t" value="${esc(x.t)}" oninput="items[${i}].t=this.value"></td><td><input type="number" min="0.5" step="0.5" value="${x.m}" onchange="items[${i}].m=+this.value||1;build()"></td><td><button onclick="delI(${i})">✕</button></td></tr>`).join('')}
+function drawI(){$('it').innerHTML=items.map((x,i)=>`<tr><td>${i+1}</td><td class="l"><input class="t" value="${esc(x.t)}" oninput="items[${i}].t=this.value"></td><td><input type="number" min="0.5" step="0.5" value="${x.m}" onchange="items[${i}].m=+this.value||1;build()"></td><td style="white-space:nowrap"><button title="دمج مع المفردة التالية" onclick="mergeI(${i})">دمج ↓</button> <button onclick="delI(${i})">✕</button></td></tr>`).join('')}
+function mergeI(i){if(i<items.length-1){const a=items[i],b=items[i+1];a.t=(a.t+' / '+b.t).trim();a.m=(+a.m||0)+(+b.m||0);a.u=false;items.splice(i+1,1);drawI();build()}}
 function addI(){items.push({t:'',m:1});drawI();build()}
 function delI(i){if(items.length>1){items.splice(i,1);drawI();build()}}
 let vals={};
@@ -99,15 +100,15 @@ async function aiRead(){
  $('ai').disabled=true;st.textContent='⏳ جارٍ قراءة الملف…';
  try{
     const imgs=f.type==='application/pdf'?await pdfToBlobs(f):[f];
-  const q='اقرأ صور ورقة الاختبار المرفقة (OCR) واستخرج مفرداتها. أعد JSON فقط بلا أي شرح بالشكل: {"title":"","subject":"","grade":"","items":[{"text":"نص المفردة مختصرًا","max":1}]}. كل جزء مثل 3-أ و3-ب مفردة مستقلة إن كانت له درجة مستقلة. max هي درجة المفردة كما تظهر في الورقة؛ إن لم تكن واضحة فضع null ولا تخمّن. إن تعذرت قراءة نص فاكتب "يحتاج إلى مراجعة المعلم". اترك الحقل فارغًا إن لم يظهر.';
+  const q='اقرأ صور ورقة الاختبار المرفقة (OCR) واستخرج مفرداتها. أعد JSON فقط بلا أي شرح بالشكل: {"title":"","subject":"","grade":"","totalMarks":null,"items":[{"text":"نص المفردة مختصرًا","max":1}]}. قاعدة التقسيم: افصل السؤال إلى مفردات فقط إذا كان لكل جزء (مثل 3-أ و3-ب) درجته المكتوبة بجانبه في الورقة. أما إذا كان للسؤال درجة إجمالية واحدة (مثل 4 درجات) وفيه أجزاء أو فقرات بلا درجة مكتوبة لكل جزء، فاجعله مفردة واحدة بدرجته الإجمالية كما هي، ولا تقسّمه ولا توزّع درجته ولا تخترع درجات للأجزاء. max هي الدرجة المطبوعة حرفيًا؛ إن لم تكن واضحة فضع null ولا تخمّن. اجعل نص المفردة ملخصًا يشمل أجزاءها. أضف totalMarks: مجموع درجات الاختبار إن كان مكتوبًا في الورقة وإلا null. إن تعذرت قراءة نص فاكتب "يحتاج إلى مراجعة المعلم". اترك الحقل فارغًا إن لم يظهر.';
   const r={text:await callAI(q,imgs)};
   const m=r.text.match(/\{[\s\S]*\}/);const j=JSON.parse(m[0]);
   if(!j.items||!j.items.length)throw new Error('empty');
   items=j.items.map(x=>({t:x.text||'',m:+x.max||1,u:!+x.max}));
   if(j.title)$('ti').value=j.title;if(j.subject)$('su').value=j.subject;if(j.grade)$('gr').value=j.grade;
   drawI();build();
-  const u=items.filter(x=>x.u).length;
-  st.textContent='✅ تمت قراءة '+items.length+' مفردة.'+(u?' '+u+' مفردة درجتها غير واضحة وضُبطت مؤقتًا على 1، يرجى مراجعتها.':'')+' راجع النص والدرجات قبل التحليل.';
+  const u=items.filter(x=>x.u).length;const sm=items.reduce((a,x)=>a+x.m,0),tm=+j.totalMarks;const wn=(tm&&Math.abs(tm-sm)>0.01)?' ⚠️ مجموع الدرجات المقروءة ('+sm+') يختلف عن مجموع الاختبار المكتوب ('+tm+')، راجع تقسيم المفردات.':'';
+  st.textContent='✅ تمت قراءة '+items.length+' مفردة.'+(u?' '+u+' مفردة درجتها غير واضحة وضُبطت مؤقتًا على 1، يرجى مراجعتها.':'')+' راجع النص والدرجات قبل التحليل.'+wn;
  }catch(e){st.textContent='تعذرت القراءة'+(e&&e.message?' ('+e.message+')':'')+'؛ جرّب صورة أوضح أو أدخل المفردات يدويًا.'}
  finally{$('ai').disabled=false}
 }
