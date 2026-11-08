@@ -66,7 +66,7 @@ th{background:var(--bg)}.r{display:flex;gap:8px;flex-wrap:wrap;align-items:cente
 
 <div class="c np"><h2>3) حدود الإتقان (قابلة للتعديل)</h2>
 <div class="r">مرتفع جدًا ≥<input type="number" id="h1" value="90"> مرتفع ≥<input type="number" id="h2" value="80"> مقبول ≥<input type="number" id="h3" value="70"> منخفض ≥<input type="number" id="h4" value="60"></div>
-<div class="r"><button class="p" onclick="run()">حلّل الاختبار</button><button onclick="window.print()">طباعة / PDF</button></div></div>
+<div class="r"><button class="p" onclick="run()">حلّل الاختبار</button><button onclick="printReport()">🖨️ طباعة / PDF</button><button onclick="saveReport()">⬇️ تنزيل التقرير</button></div></div>
 
 <div id="out"></div>
 
@@ -130,6 +130,20 @@ async function aiPlans(){
   st.textContent='✅ تم بناء الخطط. راجعها قبل تطبيقها؛ هي اقتراحات مبنية على بياناتك.';
  }catch(e){st.textContent='تعذّر التوليد'+(e&&e.message?' ('+e.message+')':'')+'؛ الخطط العامة أدناه متاحة.'}
 }
+function reportDoc(){
+ const o=$('out');if(!o||!o.innerHTML.trim()){alert('اضغط «حلّل الاختبار» أولًا.');return null}
+ const c=o.cloneNode(true);c.querySelectorAll('.np,script').forEach(e=>e.remove());
+ return '<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>تقرير تحليل الاختبار</title><style>'+`:root{--bd:#c8ccd4;--bg:#f3f4f6;--mu:#555;--tx:#000;--card:#fff}*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:A4 landscape;margin:10mm}body{font-family:Tahoma,Arial,sans-serif;color:#000;background:#fff;margin:0;font-size:12px;line-height:1.6}
+.c{border:1px solid var(--bd);border-radius:8px;padding:10px;margin:0 0 10px}h2{font-size:15px;margin:0 0 6px}
+table{border-collapse:collapse;width:100%;font-size:11px}th,td{border:1px solid var(--bd);padding:4px 5px;text-align:center;vertical-align:top}td.l{text-align:right}
+th{background:var(--bg)}tr{break-inside:avoid}.m{color:var(--mu);font-size:11px}.b{padding:1px 7px;border-radius:9px;font-size:11px;color:#fff;display:inline-block}
+input,button{display:none}.w{overflow:visible}`+'</style></head><body>'+c.innerHTML+'</body></html>';
+}
+function printReport(){const d=reportDoc();if(!d)return;
+ const w=window.open('','_blank');if(!w){saveReport();alert('منع المتصفح النافذة المنبثقة، فنُزّل التقرير كملف؛ افتحه واطبعه.');return}
+ w.document.open();w.document.write(d);w.document.close();setTimeout(()=>{w.focus();w.print()},500)}
+function saveReport(){const d=reportDoc();if(!d)return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([d],{type:'text/html'}));a.download='تقرير-تحليل-الاختبار.html';document.body.appendChild(a);a.click();a.remove()}
 function lvl(p){const a=[+$('h1').value,+$('h2').value,+$('h3').value,+$('h4').value];
  return p>=a[0]?['إتقان مرتفع جدًا','#15803d']:p>=a[1]?['إتقان مرتفع','#4d7c0f']:p>=a[2]?['إتقان مقبول','#b45309']:p>=a[3]?['إتقان منخفض','#c2410c']:['إتقان منخفض جدًا','#b91c1c']}
 function run(){
